@@ -21,7 +21,7 @@ border_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="ButtonGroup" id=1]
 
-[node name="FormSceneData" type="Popup"]
+[node name="FormSceneData" type="Control"]
 visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0

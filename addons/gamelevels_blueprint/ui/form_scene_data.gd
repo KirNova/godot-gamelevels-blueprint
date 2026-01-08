@@ -1,6 +1,6 @@
 @tool
 
-extends Popup
+extends Control
 
 ##TODO desactivar todo (menos el boton de eliminar) cuando el archivo no exista
 
@@ -30,7 +30,12 @@ func _on_Panel_gui_input(event: InputEvent) -> void:
 		$BtnClose.global_position = $Panel.get_global_mouse_position() + _drag_offset_button
 
 func show_form() -> void:
-	popup_centered()
+	visible = true
+	# Reset position to center if needed, or rely on anchors for initial position
+	# But since we drag it, maybe just show it.
+	# To mimic popup_centered() roughly:
+	# $Panel.position = (size - $Panel.size) / 2
+	pass
 
 func hide_form() -> void:
 	_room_panel_to_edit = null
