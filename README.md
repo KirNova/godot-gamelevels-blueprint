@@ -1,4 +1,4 @@
-# GameLevels Blueprint (Godot 4.5 Fork)
+# GameLevels Blueprint (Godot 4.x Fork)
 
 **Ported to Godot 4.5+ by [KirNova](https://github.com/KirNova)**.
 
