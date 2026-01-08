@@ -55,6 +55,7 @@ offset_right = 450.0
 offset_bottom = 263.5
 grow_horizontal = 2
 grow_vertical = 2
+custom_minimum_size = Vector2( 900, 527 )
 theme_override_styles/panel = SubResource( 4 )
 
 [node name="Margin" type="MarginContainer" parent="Panel"]
