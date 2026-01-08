@@ -7,7 +7,8 @@ extends Popup
 var _room_panel_to_edit : Object
 
 var _dragging := false
-var _drag_start_pos := Vector2.ZERO
+var _drag_offset_panel := Vector2.ZERO
+var _drag_offset_button := Vector2.ZERO
 
 func _ready() -> void:
 	# Enable mouse input handling on the panel
@@ -19,13 +20,14 @@ func _on_Panel_gui_input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				_dragging = true
-				_drag_start_pos = event.position
+				_drag_offset_panel = $Panel.global_position - get_global_mouse_position()
+				_drag_offset_button = $BtnClose.global_position - get_global_mouse_position()
 			else:
 				_dragging = false
 	
 	elif event is InputEventMouseMotion and _dragging:
-		var current_pos = $Panel.position
-		$Panel.position = current_pos + (event.position - _drag_start_pos)
+		$Panel.global_position = get_global_mouse_position() + _drag_offset_panel
+		$BtnClose.global_position = get_global_mouse_position() + _drag_offset_button
 
 func show_form() -> void:
 	popup_centered()
