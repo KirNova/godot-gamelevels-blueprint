@@ -20,14 +20,14 @@ func _on_Panel_gui_input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				_dragging = true
-				_drag_offset_panel = $Panel.global_position - get_global_mouse_position()
-				_drag_offset_button = $BtnClose.global_position - get_global_mouse_position()
+				_drag_offset_panel = $Panel.global_position - $Panel.get_global_mouse_position()
+				_drag_offset_button = $BtnClose.global_position - $Panel.get_global_mouse_position()
 			else:
 				_dragging = false
 	
 	elif event is InputEventMouseMotion and _dragging:
-		$Panel.global_position = get_global_mouse_position() + _drag_offset_panel
-		$BtnClose.global_position = get_global_mouse_position() + _drag_offset_button
+		$Panel.global_position = $Panel.get_global_mouse_position() + _drag_offset_panel
+		$BtnClose.global_position = $Panel.get_global_mouse_position() + _drag_offset_button
 
 func show_form() -> void:
 	popup_centered()
