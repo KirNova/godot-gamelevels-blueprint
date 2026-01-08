@@ -6,9 +6,26 @@ extends Popup
 
 var _room_panel_to_edit : Object
 
-#func _ready() -> void:
-#	for icn_check in get_node("%ChecksIcons").get_children():
-#		icn_check.connect("toggled", self, "_on_CheckIcon_toggled", [icn_check.name])
+var _dragging := false
+var _drag_start_pos := Vector2.ZERO
+
+func _ready() -> void:
+	# Enable mouse input handling on the panel
+	$Panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	$Panel.gui_input.connect(_on_Panel_gui_input)
+
+func _on_Panel_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				_dragging = true
+				_drag_start_pos = event.position
+			else:
+				_dragging = false
+	
+	elif event is InputEventMouseMotion and _dragging:
+		var current_pos = $Panel.position
+		$Panel.position = current_pos + (event.position - _drag_start_pos)
 
 func show_form() -> void:
 	popup_centered()
