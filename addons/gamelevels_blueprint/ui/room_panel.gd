@@ -82,7 +82,11 @@ func update_data() -> void:
 	var icons_visible_count : int = 0
 	for icn_check in get_node("%HBxTopIcons").get_children():
 		if icons_keys.has(icn_check.name):
-			icn_check.visible = icons[icn_check.name]
+			var is_visible = icons[icn_check.name]
+			if is_visible is bool:
+				icn_check.visible = is_visible
+			else:
+				icn_check.visible = false
 			if icn_check.visible == true:
 				icons_visible_count += 1
 		else:

@@ -28,7 +28,11 @@ func set_data(room_panel:Object) -> void:
 	#print(room_panel.icons)
 	for icn_check in get_node("%ChecksIcons").get_children():
 		if room_panel.icons.keys().has(icn_check.name):
-			icn_check.button_pressed = room_panel.icons[icn_check.name]
+			var is_pressed = room_panel.icons[icn_check.name]
+			if is_pressed is bool:
+				icn_check.button_pressed = is_pressed
+			else:
+				icn_check.button_pressed = false
 		else:
 			icn_check.button_pressed = false
 
