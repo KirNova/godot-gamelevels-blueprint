@@ -1,6 +1,8 @@
 # GameLevels Blueprint (Godot 4.x Fork)
 
-**Ported to Godot 4.5+ by [KirNova](https://github.com/KirNova)**.
+![Godot](https://img.shields.io/badge/Godot-4.x-blue)
+
+**Ported to Godot 4.x by [KirNova](https://github.com/KirNova)**.
 
 > [!NOTE]
 > This is a **fork** of the excellent [godot-gamelevels-blueprint](https://github.com/dannygaray60/godot-gamelevels-blueprint) by **Danny Garay**.
@@ -23,11 +25,13 @@ I made this plugin in order to have a direct access to the scenarios [of my metr
 ![](static/example.png)
 
 # How to install
-Just copy "addons/gamelevels_blueprint" folder in your own addons folder and enable from project settings.
+1. Download the latest release ZIP.
+2. Extract into your project's `addons/` directory.
+3. Enable the plugin in Godot: Project Settings → Plugins.
 
 ***
 
-### Working in Godot Engine 4.5.x
+### Working in Godot Engine 4.x
 
 ***
 
