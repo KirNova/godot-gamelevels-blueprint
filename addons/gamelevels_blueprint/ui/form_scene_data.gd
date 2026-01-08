@@ -23,7 +23,15 @@ func set_data(room_panel:Object) -> void:
 	$Panel/Margin/VBx/HBxFilePath/HBx/TxtFilePath.text = room_panel.file_path
 	$Panel/Margin/VBx/HBxDescription/TextEdit.text = room_panel.description
 	## seleccionar el color establecido
-	_get_color_checkbox(room_panel.color_panel).button_pressed = true
+	## seleccionar el color establecido
+	var checkbox = _get_color_checkbox(room_panel.color_panel)
+	if checkbox:
+		checkbox.button_pressed = true
+	else:
+		# Fallback to first color if match failed
+		var first_color = $Panel/Margin/VBx/HBxColors/Colors.get_child(0)
+		if first_color:
+			first_color.button_pressed = true
 	
 	#print(room_panel.icons)
 	for icn_check in get_node("%ChecksIcons").get_children():
@@ -86,7 +94,12 @@ func _on_BtnSave_pressed() -> void:
 	if _room_panel_to_edit != null:
 		
 		_room_panel_to_edit.file_path = $Panel/Margin/VBx/HBxFilePath/HBx/TxtFilePath.text
-		_room_panel_to_edit.color_panel = _get_pressed_color_checkbox().color
+		var pressed_checkbox = _get_pressed_color_checkbox()
+		if pressed_checkbox:
+			_room_panel_to_edit.color_panel = pressed_checkbox.color
+		else:
+			# Keep old color or default if nothing selected
+			pass
 		_room_panel_to_edit.description = $Panel/Margin/VBx/HBxDescription/TextEdit.text
 		
 		for icn in get_node("%ChecksIcons").get_children():

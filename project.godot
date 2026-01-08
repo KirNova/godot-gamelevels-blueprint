@@ -1,4 +1,3 @@
-; Project was converted by built-in tool to Godot 4
 ; Engine configuration file.
 ; It's best edited using the editor UI and not directly,
 ; since the parameters that go here are not all obvious.
@@ -13,11 +12,12 @@ config_version=5
 
 config/name="WorldMapEditorPlugin"
 run/main_scene="res://test_my_levels/main_city.tscn"
+config/features=PackedStringArray("4.5")
 config/icon="res://static/icon.png"
 
 [editor_plugins]
 
-enabled=PackedStringArray( "res://addons/gamelevels_blueprint/plugin.cfg", "res://addons/godot-plugin-refresher/plugin.cfg" )
+enabled=PackedStringArray("res://addons/gamelevels_blueprint/plugin.cfg", "res://addons/godot-plugin-refresher/plugin.cfg")
 
 [physics]
 
