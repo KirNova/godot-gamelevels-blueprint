@@ -93,6 +93,217 @@ offset_bottom = 68.0
 theme_override_constants/separation = -4
 alignment = 1
 
+
+
+[node name="TopPanelIcons" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+self_modulate = Color( 0.576471, 0.576471, 0.576471, 0.662745 )
+mouse_filter = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource( 8 )
+
+[node name="HBxTopIcons" type="HBoxContainer" parent="VBoxContainer/TopPanelIcons"]
+unique_name_in_owner = true
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 142.0
+offset_bottom = 39.0
+mouse_filter = 2
+alignment = 1
+
+[node name="info" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+offset_right = 32.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+
+[node name="save" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+offset_left = 36.0
+offset_right = 68.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 6
+
+[node name="skill" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+offset_left = 72.0
+offset_right = 104.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="key" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+offset_left = 108.0
+offset_right = 140.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="teleport" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 108.0
+offset_right = 140.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="text" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 144.0
+offset_right = 176.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
+[node name="boss" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 180.0
+offset_right = 212.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+
+[node name="entrance" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 216.0
+offset_right = 248.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+
+[node name="equipment" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 252.0
+offset_right = 284.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 6
+
+[node name="levelup" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 288.0
+offset_right = 320.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+
+[node name="puzzle" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 324.0
+offset_right = 356.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="upgrade" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 360.0
+offset_right = 392.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="material" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 396.0
+offset_right = 428.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+
+[node name="secret_area" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 432.0
+offset_right = 464.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 19 )
+expand = true
+stretch_mode = 6
+
+[node name="treasure" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 468.0
+offset_right = 500.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="cinematic" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 504.0
+offset_right = 536.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="easter_egg" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 540.0
+offset_right = 572.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="farm" type="TextureRect" parent="VBoxContainer/TopPanelIcons/HBxTopIcons"]
+visible = false
+offset_left = 576.0
+offset_right = 608.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
 [node name="Label" type="Label" parent="VBoxContainer"]
 offset_right = 223.0
 offset_bottom = 27.0
@@ -149,227 +360,6 @@ mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource( 4 )
 icon = ExtResource( 3 )
 flat = true
-
-[node name="Control" type="Control" parent="."]
-show_behind_parent = true
-offset_left = 10.0
-offset_top = 69.0
-offset_right = 233.0
-offset_bottom = 69.0
-mouse_filter = 2
-
-[node name="TopPanelIcons" type="PanelContainer" parent="Control"]
-unique_name_in_owner = true
-self_modulate = Color( 0.576471, 0.576471, 0.576471, 0.662745 )
-offset_left = -10.0
-offset_top = -117.0
-offset_right = 26.0
-offset_bottom = -48.0
-mouse_filter = 2
-size_flags_horizontal = 0
-theme_override_styles/panel = SubResource( 8 )
-
-[node name="HBxTopIcons" type="HBoxContainer" parent="Control/TopPanelIcons"]
-unique_name_in_owner = true
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 142.0
-offset_bottom = 39.0
-mouse_filter = 2
-alignment = 1
-
-[node name="info" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-offset_right = 32.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 22 )
-expand = true
-stretch_mode = 6
-
-[node name="save" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-offset_left = 36.0
-offset_right = 68.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 24 )
-expand = true
-stretch_mode = 6
-
-[node name="skill" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-offset_left = 72.0
-offset_right = 104.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 9 )
-expand = true
-stretch_mode = 6
-
-[node name="key" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-offset_left = 108.0
-offset_right = 140.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 8 )
-expand = true
-stretch_mode = 6
-
-[node name="teleport" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 108.0
-offset_right = 140.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 11 )
-expand = true
-stretch_mode = 6
-
-[node name="text" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 144.0
-offset_right = 176.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 23 )
-expand = true
-stretch_mode = 6
-
-[node name="boss" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 180.0
-offset_right = 212.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 21 )
-expand = true
-stretch_mode = 6
-
-[node name="entrance" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 216.0
-offset_right = 248.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 20 )
-expand = true
-stretch_mode = 6
-
-[node name="equipment" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 252.0
-offset_right = 284.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 15 )
-expand = true
-stretch_mode = 6
-
-[node name="levelup" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 288.0
-offset_right = 320.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 17 )
-expand = true
-stretch_mode = 6
-
-[node name="puzzle" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 324.0
-offset_right = 356.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 10 )
-expand = true
-stretch_mode = 6
-
-[node name="upgrade" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 360.0
-offset_right = 392.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 7 )
-expand = true
-stretch_mode = 6
-
-[node name="material" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 396.0
-offset_right = 428.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 18 )
-expand = true
-stretch_mode = 6
-
-[node name="secret_area" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 432.0
-offset_right = 464.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 19 )
-expand = true
-stretch_mode = 6
-
-[node name="treasure" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 468.0
-offset_right = 500.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 13 )
-expand = true
-stretch_mode = 6
-
-[node name="cinematic" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 504.0
-offset_right = 536.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 12 )
-expand = true
-stretch_mode = 6
-
-[node name="easter_egg" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 540.0
-offset_right = 572.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 6
-
-[node name="farm" type="TextureRect" parent="Control/TopPanelIcons/HBxTopIcons"]
-visible = false
-offset_left = 576.0
-offset_right = 608.0
-offset_bottom = 37.0
-custom_minimum_size = Vector2( 32, 32 )
-mouse_filter = 2
-texture = ExtResource( 16 )
-expand = true
-stretch_mode = 6
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/BtnGoTo" to="." method="_on_BtnGoTo_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/BtnPlay" to="." method="_on_BtnPlay_pressed"]
