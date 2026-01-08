@@ -1,4 +1,4 @@
-tool
+@tool
 extends Control
 
 var room_panel = load("res://addons/gamelevels_blueprint/ui/room_panel.tscn")
@@ -16,8 +16,8 @@ var _opened_map : String = ""
 ## lista de nodos (solo el path) para conectar entre sí
 var _rooms_to_connect : Array
 
-var f := File.new()
 var Conf := ConfigFile.new()
+
 
 var _configfile_path : String = "res://addons/gamelevels_blueprint/conf.ini"
 
@@ -52,7 +52,8 @@ func show_notif(txt:String="Hello, this is a Notification!", hide_time:int=0) ->
 	
 	$PanelToolBar/MarginContainer/HBx/LabelMsgs.text = txt
 	
-	_tween_notif(Color("00ffffff"), Color("ffffff"))
+	_tween_notif(Color("#ffffff00"), Color("ffffff"))
+
 	
 	if hide_time == 0:
 		$TimerHideNotif.stop()
@@ -61,7 +62,7 @@ func show_notif(txt:String="Hello, this is a Notification!", hide_time:int=0) ->
 
 func hide_notif() -> void:
 	if $PanelToolBar/MarginContainer/HBx/LabelMsgs.modulate.a > 0:
-		_tween_notif(Color("ffffff"), Color("00ffffff"))
+		_tween_notif(Color("ffffff"), Color("#ffffff00"))
 
 ## limpiar graphedit
 func clean_graph_edit() -> void:
@@ -75,8 +76,8 @@ func clean_graph_edit() -> void:
 
 func save_map() -> void:
 	var err : int
-	var file := File.new()
 	var data_to_save : Dictionary
+
 	## hijos del graphedit
 	var graph_edit_children : Array = $GraphEdit.get_children()
 	## lista de room panels
@@ -106,7 +107,7 @@ func save_map() -> void:
 					"file_path": rp.file_path,
 					"description": rp.description,
 					"color_panel": rp.color_panel,
-					"offset": rp.offset,
+					"offset": rp.position_offset,
 					"icons": rp.icons,
 				}
 			)
@@ -132,7 +133,8 @@ func save_map() -> void:
 		"connectors": room_connectors
 	}
 	
-	err = file.open(_opened_map, File.WRITE)
+	var file = FileAccess.open(_opened_map, FileAccess.WRITE)
+	err = FileAccess.get_open_error()
 	
 	if err != OK:
 		print("Error Saving Map err #%d"%[err])
@@ -141,6 +143,7 @@ func save_map() -> void:
 	file.store_var(data_to_save)
 	
 	file.close()
+
 	
 	show_notif("Map Saved!", 2)
 
@@ -150,12 +153,12 @@ func open_map() -> void:
 	get_node("%RecenListControl").visible = false
 	get_node("%BtnOpenRecentFiles").visible = false
 	
-	var file := File.new()
 	var data_to_load : Dictionary
 	
-	file.open(_opened_map, File.READ)
+	var file = FileAccess.open(_opened_map, FileAccess.READ)
 	data_to_load = file.get_var()
 	file.close()
+
 	
 	## cargar configuracion
 	$GraphEdit.scroll_offset = data_to_load["graph_edit_config"]["scroll_offset"]
@@ -197,14 +200,14 @@ func _show_recent_list() -> void:
 	var recent_file_count : int = 0
 	## mostrar lista de recientes
 	var recent_list : Array = Conf.get_value("main", "recent_list", [])
-	if recent_list.empty() == false:
+	if recent_list.is_empty() == false:
 		for file in recent_list:
-			if f.file_exists(file):
-				var Btn = button_recent_file.instance()
+			if FileAccess.file_exists(file):
+				var Btn = button_recent_file.instantiate()
 				Btn.f_path = file
 				get_node("%VBxRecentFiles").add_child(Btn)
-				Btn.connect("open_item", self, "_on_RecentFile_opened")
-				Btn.connect("delete_item", self, "_on_RecentFile_deleted", [Btn.get_path()])
+				Btn.connect("open_item", Callable(self, "_on_RecentFile_opened"))
+				Btn.connect("delete_item", Callable(self, "_on_RecentFile_deleted").bind(Btn.get_path()))
 				recent_file_count += 1
 	
 	if recent_file_count > 0:
@@ -217,7 +220,7 @@ func _add_room_panel(room_data:Dictionary) -> void:
 	
 	var room_data_keys = room_data.keys()
 	
-	var room_panel_instance = room_panel.instance()
+	var room_panel_instance = room_panel.instantiate()
 	
 	if room_data_keys.has("node_name"):
 		room_panel_instance.name = room_data["node_name"]
@@ -230,19 +233,19 @@ func _add_room_panel(room_data:Dictionary) -> void:
 	if room_data_keys.has("color_panel"):
 		room_panel_instance.color_panel = room_data["color_panel"]
 	if room_data_keys.has("offset"):
-		room_panel_instance.offset = room_data["offset"]
+		room_panel_instance.position_offset = room_data["offset"]
 	if room_data_keys.has("icons"):
 		room_panel_instance.icons = room_data["icons"]
 	
 	
 	## conectar señales del panel
-	room_panel_instance.connect("edit_request", self, "_on_RoomPanel_edit_request")
+	room_panel_instance.connect("edit_request", Callable(self, "_on_RoomPanel_edit_request"))
 	
 	$GraphEdit.add_child(room_panel_instance)
 
 ## añadir conector, se usan los nombres de nodos para identificarlos
 func _add_room_connector(rooms_nodename:Array, focusline:bool = false) -> void:
-	var connector_instance = room_connector.instance()
+	var connector_instance = room_connector.instantiate()
 	connector_instance.node_a_path = NodePath(str(get_path())+"/GraphEdit/"+rooms_nodename[0])
 	connector_instance.node_b_path = NodePath(str(get_path())+"/GraphEdit/"+rooms_nodename[1])
 	$GraphEdit.add_child(connector_instance)
@@ -266,18 +269,22 @@ func _is_already_connected(nodepath_a:NodePath, nodepath_b:NodePath) -> bool:
 	return false
 
 func _tween_notif(from:Color, to:Color) -> void:
-	$Tween.interpolate_property(
+	var tween = create_tween()
+	tween.tween_property(
 		$PanelToolBar/MarginContainer/HBx/LabelMsgs, "modulate",
-		from, to, 0.5
-	)
-	$Tween.start()
+		to, 0.5
+	).from(from)
+	
+	if to.a == 0:
+		tween.finished.connect(func(): $PanelToolBar/MarginContainer/HBx/LabelMsgs.text = "")
+
 
 ## el graphedit ha recibido un archivo de escenario
 func _on_GraphEdit_scene_dropped(filepath, node_position) -> void:
 	
 	get_node("%BtnOpenRecentFiles").visible = false
 	
-	var room_panel_instance = room_panel.instance()
+	var room_panel_instance = room_panel.instantiate()
 	
 	var room_panel_data : Dictionary = {
 		"file_path": filepath,
@@ -332,7 +339,7 @@ func _on_FileDialogOpenMap_file_selected(path: String) -> void:
 
 ## se seleccionó un archivo a guardar
 func _on_FileDialogSaveMap_file_selected(path: String) -> void:
-	if _opened_map.empty() == true:
+	if _opened_map.is_empty() == true:
 		_opened_map = path
 	save_map()
 	$PanelFileMapNameOpened/HBx/Lbl.text = _opened_map.get_file().replace(".lvlmap", "")
@@ -411,15 +418,7 @@ func _on_BtnCancelLink_pressed() -> void:
 func _on_BtnAbout_pressed() -> void:
 	$PopupAbout.popup()
 
-## al terminar tween de ocultar notif, resetear texto
-func _on_Tween_tween_completed(_object: Object, key: NodePath) -> void:
-	if (
-		key == ":modulate" 
-		and 
-		$PanelToolBar/MarginContainer/HBx/LabelMsgs.modulate.a == 0
-		and $Tween.is_active() == false
-	):
-		$PanelToolBar/MarginContainer/HBx/LabelMsgs.text = ""
+
 
 
 func _on_BtnCloseAbout_pressed() -> void:

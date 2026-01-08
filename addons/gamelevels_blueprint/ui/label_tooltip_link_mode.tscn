@@ -14,8 +14,8 @@ border_width_right = 1
 border_width_bottom = 1
 
 [node name="LabelTooltipLinkMode" type="Label"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_styles/normal = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_styles/normal = SubResource( 1 )
 text = "Label Tooltip"
 script = ExtResource( 1 )

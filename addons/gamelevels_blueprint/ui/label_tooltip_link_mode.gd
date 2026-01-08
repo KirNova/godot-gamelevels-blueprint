@@ -1,4 +1,4 @@
-tool
+@tool
 
 extends Label
 
@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if mode > 0:
-		rect_global_position = get_global_mouse_position() + Vector2(-20,-70)
+		global_position = get_global_mouse_position() + Vector2(-20,-70)
 
 func set_mode(mod:int) -> void:
 	mode = mod

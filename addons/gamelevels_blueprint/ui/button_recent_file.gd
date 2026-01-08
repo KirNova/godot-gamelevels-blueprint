@@ -1,4 +1,4 @@
-tool
+@tool
 
 extends HBoxContainer
 
@@ -9,7 +9,7 @@ var f_path : String
 
 func _ready() -> void:
 	$LinkButton.text = f_path.get_file()
-	$LinkButton.hint_tooltip = f_path
+	$LinkButton.tooltip_text = f_path
 
 func _on_Button_pressed() -> void:
 	emit_signal("delete_item", f_path)

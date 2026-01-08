@@ -1,8 +1,8 @@
-tool
+@tool
 
 extends CheckBox
 
-export var color : Color setget set_color
+@export var color : Color: set = set_color
 
 func get_color_rect() -> Color:
 	return color

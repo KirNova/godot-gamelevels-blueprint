@@ -1,16 +1,16 @@
-tool
+@tool
 
 extends GraphNode
 
-export var node_a_path := NodePath()
-export var node_b_path := NodePath()
+@export var node_a_path := NodePath()
+@export var node_b_path := NodePath()
 
 var node_a : Object = null
 var node_b : Object = null
 
 var _btn_disconnect_hovered : bool
 
-var _original_line_color := Color("85ffffff")
+var _original_line_color := Color("#ffffff85")
 
 func _ready() -> void:
 
@@ -30,17 +30,17 @@ func make_connections() -> void:
 
 	## conectar señales que indican que el panel se está moviendo
 	
-	if node_a != null and node_a.has_signal("offset_changed"):
-		node_a.connect("tree_exiting", self, "_on_RoomPanel_tree_exiting")
-		node_a.connect("offset_changed", self, "_on_RoomPanel_offset_changed")
-		node_a.connect("focus_entered", self, "_on_RoomPanel_focus_entered")
-		node_a.connect("focus_exited", self, "_on_RoomPanel_focus_exited")
+	if node_a != null and node_a.has_signal("position_offset_changed"):
+		node_a.connect("tree_exiting", Callable(self, "_on_RoomPanel_tree_exiting"))
+		node_a.connect("position_offset_changed", Callable(self, "_on_RoomPanel_offset_changed"))
+		node_a.connect("focus_entered", Callable(self, "_on_RoomPanel_focus_entered"))
+		node_a.connect("focus_exited", Callable(self, "_on_RoomPanel_focus_exited"))
 	
-	if node_b != null and node_b.has_signal("offset_changed"):
-		node_b.connect("tree_exiting", self, "_on_RoomPanel_tree_exiting")
-		node_b.connect("offset_changed", self, "_on_RoomPanel_offset_changed")
-		node_b.connect("focus_entered", self, "_on_RoomPanel_focus_entered")
-		node_b.connect("focus_exited", self, "_on_RoomPanel_focus_exited")
+	if node_b != null and node_b.has_signal("position_offset_changed"):
+		node_b.connect("tree_exiting", Callable(self, "_on_RoomPanel_tree_exiting"))
+		node_b.connect("position_offset_changed", Callable(self, "_on_RoomPanel_offset_changed"))
+		node_b.connect("focus_entered", Callable(self, "_on_RoomPanel_focus_entered"))
+		node_b.connect("focus_exited", Callable(self, "_on_RoomPanel_focus_exited"))
 
 func focus_line() -> void:
 	_original_line_color = $Line2D.default_color
@@ -51,7 +51,7 @@ func focus_line() -> void:
 	$BtnDisconnect.self_modulate.a = 1
 
 func unfocus_line() -> void:
-	$Line2D.default_color = Color("85ffffff")
+	$Line2D.default_color = Color("#ffffff85")
 	$Line2D.width = 4
 	$BtnDisconnect.disabled = true
 	self_modulate.a = 0
@@ -65,14 +65,14 @@ func _update_line() -> void:
 	var point_b : Vector2 = node_b.get_center_offset()
 
 	## posicionar al centro de la linea
-	offset = Vector2(
+	position_offset = Vector2(
 		( (point_a.x + point_b.x) / 2 ),
 		( (point_a.y + point_b.y) / 2 )
 	)
-	offset = offset - (rect_size / 2)
+	position_offset = position_offset - (size / 2)
 
-	$Line2D.points[0] = point_a - offset
-	$Line2D.points[1] = point_b - offset
+	$Line2D.points[0] = point_a - position_offset
+	$Line2D.points[1] = point_b - position_offset
 
 func _on_RoomPanel_tree_exiting() -> void:
 	queue_free()
