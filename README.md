@@ -1,4 +1,15 @@
-# GameLevels Blueprint
+# GameLevels Blueprint (Godot 4.5 Fork)
+
+**Ported to Godot 4.5+ by [KirNova](https://github.com/KirNova)**.
+
+> [!NOTE]
+> This is a **fork** of the excellent [godot-gamelevels-blueprint](https://github.com/dannygaray60/godot-gamelevels-blueprint) by **Danny Garay**.
+> Massive thanks to him for creating the original tool!
+>
+> This fork exists primarily to maintain compatibility with modern Godot versions (4.x), as the original repository targets Godot 3.x. We aim to keep the original spirit and structure intact. If the original maintainer updates the upstream version, we are happy to contribute these changes back or retire this fork.
+
+***
+
 Create a blueprint in *Godot Engine* to organize levels/rooms of a game and their interconnections. **Useful for metroidvanias or non-linear games.**
 
 ***
@@ -16,7 +27,7 @@ Just copy "addons/gamelevels_blueprint" folder in your own addons folder and ena
 
 ***
 
-### Working in Godot Engine 3.4.x and 3.5.x
+### Working in Godot Engine 4.5.x
 
 ***
 
@@ -100,10 +111,11 @@ You can save the blueprint in a lvlmap file. And work with several at the same t
 # Credits
 
 This plugin was made by [Danny Garay](https://twitter.com/dannygaray60)
+Ported to Godot 4 by [KirNova](https://github.com/KirNova)
 
 **Icons made by svgrepo.com and game-icons.net**
 
-Website
+Original Website
 [https://dannygaray60.github.io/](https://dannygaray60.github.io/)
 
 Email: [dannygaray60@gmail.com](mailto:dannygaray60@gmail.com)
